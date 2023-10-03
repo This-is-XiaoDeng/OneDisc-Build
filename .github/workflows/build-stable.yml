@@ -1,0 +1,42 @@
+name: 'Build (Stable)'
+
+on:
+  repository_dispatch:
+    types: [my-custom-event]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        arch: [x86, x64, arm64]
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.12'
+
+      - name: Clone and build code
+        if: matrix.os != 'windows-latest'
+        run: |
+          chmod +x ./.github/build_stable.sh
+          ./.github/build_stable.sh
+        env:
+          ARCH: ${{ matrix.arch }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN_1 }}
+
+      - name: Clone and build code (for Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          ./.github/build_stable.ps1
+        env:
+          ARCH: ${{ matrix.arch }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN_1 }}
+
