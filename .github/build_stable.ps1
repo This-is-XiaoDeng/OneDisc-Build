@@ -31,8 +31,8 @@ nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build
 
 # Move and compress the compiled file
 Set-Location "build"
-Rename-Item -Path "main.bin" -NewName "onedisc"
-Compress-Archive -Path "./onedisc" -DestinationPath "$ORIGIN_PWD/stable/OneDisc-$(Get-CimInstance Win32_OperatingSystem).caption-$env:ARCH.zip"
+Rename-Item -Path "main.exe" -NewName "onedisc.exe"
+Compress-Archive -Path ".\onedisc.exe" -DestinationPath "$ORIGIN_PWD\stable\OneDisc-$(Get-CimInstance Win32_OperatingSystem).caption-$env:ARCH.zip"
 
 # Commit and push changes to the repository
 Set-Location $ORIGIN_PWD
