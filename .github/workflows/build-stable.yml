@@ -39,4 +39,5 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}
           GH_TOKEN: ${{ secrets.GH_TOKEN_1 }}
+          GH_TOKEN_1: ${{ secrets.GITHUB_TOKEN }}
 
