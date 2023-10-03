@@ -16,7 +16,7 @@ export SUB_VER=$(git rev-list --no-merges --count $(git describe --tags --abbrev
 # echo "VERSION=$VERSION.$SUB_VER" >> $GITHUB_ENV
 echo "Currect Version Number: $VERSION.$SUB_VER"
 
-nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --lto main.py
+python -m nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --lto main.py
 
 cd build
 mv main.bin onedisc
