@@ -27,6 +27,6 @@ git add -A
 git config --global user.name "github-actions[bot]"
 git config --global user.email "action@github.com"
 git commit -m "Update version to $VERSION ($(uname), $ARCH)"
-git remote set-url origin https://x-access-token:$GH_TOKEN_1@github.com/This-is-XiaoDeng/OneDisc-Build.git
+git remote set-url origin https://x-access-token:$(echo $GH_TOKEN)@github.com/This-is-XiaoDeng/OneDisc-Build.git
 git pull
 git push --force
