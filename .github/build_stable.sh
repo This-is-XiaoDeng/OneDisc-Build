@@ -1,7 +1,7 @@
 set -e
 
 export ORIGIN_PWD=$(pwd)
-mkdir --parents stable
+mkdir -p stable
 
 cd /tmp
 git clone https://x-access-token:$GH_TOKEN@github.com/ITCraftDevelopmentTeam/OneDisc.git
