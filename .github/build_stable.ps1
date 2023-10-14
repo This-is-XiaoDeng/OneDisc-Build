@@ -22,13 +22,15 @@ pip install -r requirements.txt
 pip install -U nuitka
 
 # Extract version information
+tree
 $VERSION = & python -c 'print(__import__("version").VERSION)'
 $SUB_VER = git rev-list --no-merges --count $(git describe --tags --abbrev=0)..HEAD
 Write-Output "Current Version Number: $VERSION.$SUB_VER"
 
 # Compile Python code using Nuitka
-echo Yes |nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --lto=yes main.py
+echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --lto=yes main.py
 
+tree
 # Move and compress the compiled file
 Set-Location "build"
 Rename-Item -Path "main.exe" -NewName "onedisc.exe"
