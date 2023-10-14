@@ -22,19 +22,18 @@ pip install -r requirements.txt
 pip install -U nuitka
 
 # Extract version information
-tree
+ls
 $VERSION = & python -c 'print(__import__("version").VERSION)'
 $SUB_VER = git rev-list --no-merges --count $(git describe --tags --abbrev=0)..HEAD
 Write-Output "Current Version Number: $VERSION.$SUB_VER"
 
 # Compile Python code using Nuitka
-echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --lto=yes main.py
+echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --windows-icon=onedisc.ico --lto=yes main.py
 
-tree
 # Move and compress the compiled file
 Set-Location "build"
 Rename-Item -Path "main.exe" -NewName "onedisc.exe"
-Compress-Archive -Path ".\onedisc.exe" -DestinationPath "$ORIGIN_PWD\stable\OneDisc-$(Get-CimInstance Win32_OperatingSystem).caption-$env:ARCH.zip"
+Compress-Archive -Path ".\onedisc.exe" -DestinationPath "$ORIGIN_PWD\stable\OneDisc-Windows-$env:ARCH.zip"
 
 # Commit and push changes to the repository
 Set-Location $ORIGIN_PWD
