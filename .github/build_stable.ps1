@@ -33,7 +33,7 @@ echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --outpu
 # Move and compress the compiled file
 Set-Location "build"
 Rename-Item -Path "main.exe" -NewName "onedisc.exe"
-Compress-Archive -Path ".\onedisc.exe" -DestinationPath "$ORIGIN_PWD\stable\OneDisc-Windows-$env:ARCH.zip"
+Compress-Archive -Path ".\onedisc.exe" -DestinationPath "$ORIGIN_PWD\stable\OneDisc-Windows-$env:ARCH.zip" -Force
 
 # Commit and push changes to the repository
 Set-Location $ORIGIN_PWD
