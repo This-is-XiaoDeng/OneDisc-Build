@@ -28,7 +28,7 @@ $SUB_VER = git rev-list --no-merges --count $(git describe --tags --abbrev=0)..H
 Write-Output "Current Version Number: $VERSION.$SUB_VER"
 
 # Compile Python code using Nuitka
-echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --include-package-data=markdown2image --windows-icon-from-ico=onedisc.ico --lto=yes main.py
+echo Yes | nuitka --onefile --standalone --follow-imports --show-modules --output-dir=build --windows-icon-from-ico=onedisc.ico --lto=yes main.py
 
 # Move and compress the compiled file
 Set-Location "build"
