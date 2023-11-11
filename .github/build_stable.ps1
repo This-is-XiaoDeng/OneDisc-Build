@@ -46,5 +46,11 @@ git config --global user.email "action@github.com"
 git commit -m "Update version to $VERSION ($(Get-CimInstance Win32_OperatingSystem).caption), $env:ARCH"
 git remote set-url origin "https://x-access-token:$(echo $env:GH_TOKEN_1)@github.com/This-is-XiaoDeng/OneDisc-Build.git"
 git pull
+
+
+$randomSeconds = Get-Random -Minimum 10 -Maximum 121
+Start-Sleep -Seconds $randomSeconds
+
+git pull
 git push --force
 

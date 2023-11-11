@@ -32,4 +32,9 @@ git config --global user.email "action@github.com"
 git commit -m "Update version to $VERSION ($(uname), $ARCH)"
 git remote set-url origin https://x-access-token:$(echo $GH_TOKEN)@github.com/This-is-XiaoDeng/OneDisc-Build.git
 git pull
+
+random_seconds=$((RANDOM % (120 - 10 + 1) + 10))
+sleep $random_seconds
+
+git pull
 git push --force
